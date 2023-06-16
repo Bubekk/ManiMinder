@@ -1,6 +1,6 @@
 # ManiMinder
 
-ManiMinder is an application designed to assist professionals such as beauticians and nail stylists. It helps them manage their shopping lists for beauty products by providing reminders based on predefined expiration dates. With ManiMinder, users can easily keep track of product details, such as brand, price, and the date of the last purchase.
+ManiMinder is an application designed to assist professionals such as beauticians and nail stylists. It helps them manage their shopping lists for beauty products by providing reminders based on predefined expiration dates. With ManiMinder, users can easily keep track of product details, such as brand, price, and the date of the last purchase. And that is only first funcionality by now.
 
 
 ## Features
@@ -22,8 +22,3 @@ ManiMinder is an application designed to assist professionals such as beautician
 
 Thank you for considering contributing to ManiMinder! If you have any suggestions, bug reports, or feature requests, please submit them via the Issues tab of this repository.
 
-Please note that this repository does not contain the backend implementation or any Python files.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
