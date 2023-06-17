@@ -1,0 +1,24 @@
+@import '../root.scss';
+
+.page {
+  @include login-signin-box;
+
+  &__signinbox {
+    width: 80%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 30px;
+
+    input {
+      @include input;
+    }
+  }
+
+  &__button-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+  }
+}

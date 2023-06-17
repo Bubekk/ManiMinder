@@ -1,21 +1,12 @@
-import axios from "axios";
 import { useState, useRef } from "react";
-import Button from "./UI/Button";
+import { Link } from "react-router-dom";
+import '../../styles/Pages/SignupPageStyle.scss';
+import Button from "../UI/Button";
 
-function CreateUser() {
+function CreateUser(props) {
   const [formData, setFormData] = useState({});
 
   const inputRefs = useRef({});
-
-  // POST function to create new user with input values
-  const createNewUser = async (userData) => {
-    try {
-      const response = await axios.post("http://127.0.0.1:5000/api/users", userData);
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   // Handling input value change
   const handleOnChange = (e) => {
@@ -24,7 +15,7 @@ function CreateUser() {
 
   // Handling button "Create User" function. First creating new user, then setting input value to ""
   const handleCreateUser = () => {
-    createNewUser(formData)
+    props.createNewUser(formData)
     Object.keys(inputRefs.current).forEach((name) => {
       inputRefs.current[name].value = "";
     });
@@ -48,9 +39,9 @@ function CreateUser() {
           placeholder="Password"
         />
       </div>
-      <div className="page_button-container">
+      <div className="page__button-container">
         <Button tag="Create account" onClick={handleCreateUser} />
-        <Button tag="Log In" />
+        <Link to="/"><Button tag="Log In" /></Link>
       </div>
     </div>
   );

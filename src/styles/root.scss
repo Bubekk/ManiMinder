@@ -1,0 +1,19 @@
+@mixin login-signin-box {
+  width: 350px;
+  height: 300px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid white;
+  border-radius: 3%;
+  flex-direction: column;
+}
+
+@mixin input {
+  height: 32px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background: none;
+  text-align: center;
+}
