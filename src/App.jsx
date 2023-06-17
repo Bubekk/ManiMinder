@@ -35,6 +35,7 @@ function App() {
       const response = await axios.post("http://127.0.0.1:5000/api/users/login", userCredentials);
       setUserId(response.data.user_id);
       sessionStorage.setItem("userId", response.data.user_id);
+      sessionStorage.setItem("userLogin", response.data.user_login);
       console.log(response.data);
       setLoginError(response.data.message);
     } catch (error) {

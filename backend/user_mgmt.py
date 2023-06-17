@@ -1,21 +1,14 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import psycopg2
+from config import db_config
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-
 def create_connection():
-    conn = psycopg2.connect(
-        host="localhost",
-        port="5432",
-        database="ManiMinder",
-        user="postgres",
-        password="Bubekk",
-    )
+    conn = psycopg2.connect(**db_config)
     return conn
-
 
 @app.route("/api/users", methods=["POST"])
 def create_user():
@@ -56,7 +49,7 @@ def login_user():
     user_password = data.get("user_password")
 
     cursor.execute(
-        "SELECT user_id FROM users WHERE (user_login = %s OR user_email = %s) AND user_password = %s",
+        "SELECT user_id, user_login FROM users WHERE (user_login = %s OR user_email = %s) AND user_password = %s",
         (user_login, user_email, user_password),
     )
     set_user = cursor.fetchone()
@@ -64,7 +57,7 @@ def login_user():
     if set_user:
         cursor.close()
         conn.close()
-        return jsonify({"user_id": set_user[0]})
+        return jsonify({"user_id": set_user[0], "user_login": set_user[1]})
     else:
         cursor.close()
         conn.close()
