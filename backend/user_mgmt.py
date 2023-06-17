@@ -5,17 +5,9 @@ import psycopg2
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-
 def create_connection():
-    conn = psycopg2.connect(
-        host="localhost",
-        port="5432",
-        database="ManiMinder",
-        user="postgres",
-        password="Bubekk",
-    )
+    conn = psycopg2.connect(**db_config)
     return conn
-
 
 @app.route("/api/users", methods=["POST"])
 def create_user():
