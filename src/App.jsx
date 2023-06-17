@@ -18,8 +18,11 @@ function App() {
     }
   };
 
-  // State for response user id for showing valid user page
-  const [userId, setUserId] = useState("");
+  // State for response user id for showing valid user page, checking if userId is set on logged userId
+  const [userId, setUserId] = useState(() => {
+    const storedUser = sessionStorage.getItem("userId");
+    return storedUser ? storedUser : "";
+  });
 
   // State for invalid login credentials which is viewed after wrong login or password
   const [loginError, setLoginError] = useState("");
