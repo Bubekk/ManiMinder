@@ -8,7 +8,7 @@ function UserPage(props) {
 
   return (
     <div className="userpage">
-      <p>Yellow {userLogin()} </p>
+      <p>Hello {userLogin()} </p>
     </div>
   );
 }
