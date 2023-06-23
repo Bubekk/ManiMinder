@@ -6,6 +6,7 @@ import "./App.css";
 import Login from "./components/LoginUser/Login";
 import CreateUser from "./components/CreateUser/CreateUser";
 import UserPage from "./components/UserPage/UserPage";
+import UserProfile from "./components/UserPage/Profile/UserProfile";
 
 function App() {
   // POST function to create new user with input values
@@ -48,6 +49,9 @@ function App() {
     if (loginError === undefined && userId !== "") {
       setUserId(storedUser);
       navigate(`/${storedUser}`);
+
+      //I don't like it that I used autorefresh on login, but if i haven't button in userPage dont work properly :(
+      window.location.reload(false);
     }
   }, [loginError, navigate, userId]);
 
@@ -56,7 +60,9 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Login loginUser={loginUser} loginError={loginError} userId={userId} />}></Route>
         <Route path="/signup" element={<CreateUser createNewUser={createNewUser} />}></Route>
-        <Route path={`/${userId}`} element={<UserPage userId={userId} />}></Route>
+        <Route path="/:userId" element={<UserPage navigate={navigate} />}>
+          <Route path="profile" element={<UserProfile />}></Route>
+        </Route>
       </Routes>
     </>
   );
