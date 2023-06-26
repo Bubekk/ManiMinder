@@ -1,10 +1,14 @@
 import { Outlet, useNavigate } from "react-router-dom";
+import "../../styles/Pages/UserPageStyle.scss";
+import NavBar from "../UI/NavBar";
+import Footer from "../UI/Footer";
+import SideMenu from "../UI/SideMenu";
 
 function UserPage() {
   const navigate = useNavigate();
 
-  const handleRoute = () => {
-    navigate("profile");
+  const handleRoute = (directory) => {
+    navigate(directory);
   };
 
   //userLogin variable for setting page welcoming text for logged user
@@ -15,9 +19,12 @@ function UserPage() {
 
   return (
     <div className="userpage">
-      <p>Hello {userLogin()} </p>
-      <button onClick={handleRoute}>Go to Profile</button>
-      <Outlet />
+      <NavBar userLogin={userLogin()} />
+      <SideMenu handleRoute={handleRoute} />
+      <div className="userpage__outlet">
+        <Outlet />
+      </div>
+      <Footer />
     </div>
   );
 }

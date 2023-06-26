@@ -7,6 +7,7 @@ import Login from "./components/LoginUser/Login";
 import CreateUser from "./components/CreateUser/CreateUser";
 import UserPage from "./components/UserPage/UserPage";
 import UserProfile from "./components/UserPage/Profile/UserProfile";
+import UserSettings from "./components/UserPage/Settings/UserSettings";
 
 function App() {
   // POST function to create new user with input values
@@ -62,6 +63,7 @@ function App() {
         <Route path="/signup" element={<CreateUser createNewUser={createNewUser} />}></Route>
         <Route path="/:userId" element={<UserPage navigate={navigate} />}>
           <Route path="profile" element={<UserProfile />}></Route>
+          <Route path="settings" element={<UserSettings />}></Route>
         </Route>
       </Routes>
     </>

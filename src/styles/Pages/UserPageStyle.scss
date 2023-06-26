@@ -1,0 +1,13 @@
+.userpage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    &__outlet {
+        width: 100%;
+        background-color: #242424;
+    }
+}
