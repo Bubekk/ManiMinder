@@ -1,24 +1,26 @@
 @import "../root.scss";
 
 .usersettings {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include centered-flex;
   flex-wrap: wrap;
   padding: 3%;
 
   &__formdiv {
     width: 30%;
-    min-height: 280px;
+    min-height: 350px;
+    @include centered-flex;
+    flex-direction: column;
     border: 1px solid white;
     border-radius: 25px;
     margin-top: 50px;
     margin-right: 80px;
 
+    &--radio {
+      min-height: 120px;
+    }
+
     &__form {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include centered-flex;
       flex-direction: column;
 
       &--langchange,

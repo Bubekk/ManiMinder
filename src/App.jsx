@@ -35,9 +35,10 @@ function App() {
   const loginUser = async (userCredentials) => {
     try {
       const response = await axios.post("http://127.0.0.1:5000/api/users/login", userCredentials);
-      setUserId(response.data.user_id);
       sessionStorage.setItem("userId", response.data.user_id);
       sessionStorage.setItem("userLogin", response.data.user_login);
+      sessionStorage.setItem("userSettings_theme", response.data.user_settings.theme);
+      sessionStorage.setItem("userSettings_lang", response.data.user_settings.lang);
       console.log(response.data);
       setLoginError(response.data.message);
     } catch (error) {
@@ -59,11 +60,11 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Login loginUser={loginUser} loginError={loginError} userId={userId} />}></Route>
-        <Route path="/signup" element={<CreateUser createNewUser={createNewUser} />}></Route>
+        <Route exact path="/" element={<Login loginUser={loginUser} loginError={loginError} userId={userId} />} />
+        <Route path="/signup" element={<CreateUser createNewUser={createNewUser} />} />
         <Route path="/:userId" element={<UserPage navigate={navigate} />}>
-          <Route path="profile" element={<UserProfile />}></Route>
-          <Route path="settings" element={<UserSettings />}></Route>
+          <Route path="profile" element={<UserProfile />} />
+          <Route path="settings" element={<UserSettings />} />
         </Route>
       </Routes>
     </>
